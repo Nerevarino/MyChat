@@ -10,12 +10,14 @@ function setFileText($name,$text)
 
 class FoundUserByEmail extends Exception {}
 class FoundUserByNickname extends Exception {}
+class UserNotFound extends Exception {}
 
 class Login{
     protected $identification;
     protected $password;
     const  byEmail=1;
     const  byNickname=2;
+    const  byNothing=3;
 
     protected $db_connection;
     protected $status_message;
@@ -27,34 +29,13 @@ class Login{
         $this->password=$password;
     }
 
-    protected function findUser($byWhat)
+    protected function findUserBy($query)
     {
-        switch($byWhat){
-            case Login::byEmail:
-                $email_query=<<<FINDUSER
-SELECT id FROM Users where(email="$this->identification");
-FINDUSER;
-                $query_result=$this->db_connection->query($email_query);
-                $rows_count=$query_result->num_rows;
-                if($rows_count==1){
-                    throw new FoundUserByEmail("");
-                }
-                break;
-            case Login::byNickname:
-                $nickname_query=<<<FINDUSER
-SELECT id FROM Users where(nickname="$this->identification");
-FINDUSER;
-                $query_result=$this->db_connection->query($nickname_query);
-                $rows_count=$query_result->num_rows;
-                if($rows_count==1){
-                    throw new FoundUserByNickname("");
-                }
-                break;
-            default:
-                break;
-        }
-
-
+        $query_result=$this->db_connection->query($query);
+        $rows_count=$query_result->num_rows;
+        if($rows_count==1){
+            return 1;
+        }else {return 0;}               
     }
 
     public function __invoke()
@@ -71,17 +52,28 @@ FINDUSER;
             header("Location: http://ttbg.su/dbfail.php");
         }
         
+        $email_query=<<<FINDUSER
+SELECT id FROM Users where(email="$this->identification");
+FINDUSER;
+        $nickname_query=<<<FINDUSER
+SELECT id FROM Users where(nickname="$this->identification");
+FINDUSER;
         
-        try{
-            $this->findUser(self::byEmail);
-            $this->findUser(self::byNickname);
+        switch(1){
+            case 1:
+              if(findUserBy($email_query)){
+                 $this->status_message="Пользователь найден по email";
+                 break;
+              }
+              if(findUserBy($nickname_query)){
+                 $this->status_message="Пользователь найден по nickname";
+                 break;
+              }              
+            default:
+                $this->status_message="Ошибка входа: пользователь не найден"
+                break;
         }
-        catch(FoundUserByEmail $e){ //нашли по email
-            $this->status_message="Клиент найден по e-mail";
-        }
-        catch(FoundUserByNickname $e){ //нашли по nickname
-            $this->status_message="Клиент найден по nickname";
-        }
+
         $this->db_connection->close();
         return $this->status_message;        
     }

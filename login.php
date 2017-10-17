@@ -8,19 +8,15 @@ function setFileText($name,$text)
     fclose($file);
 }
 
-class FoundUserByEmail extends Exception {}
-class FoundUserByNickname extends Exception {}
-class UserNotFound extends Exception {}
+
 
 class Login{
     protected $identification;
     protected $password;
-    const  byEmail=1;
-    const  byNickname=2;
-    const  byNothing=3;
 
     protected $db_connection;
-    protected $status_message;
+    protected $user_id;
+    protected $user_password;
 
 
     public function __construct($identification, $password)
@@ -34,6 +30,9 @@ class Login{
         $query_result=$this->db_connection->query($query);
         $rows_count=$query_result->num_rows;
         if($rows_count==1){
+            $row=$query_result->fetch_array(MYSQLI_BOTH);
+            $this->user_id=$row['id'];
+            $this->user_password=$row['passwd'];
             return 1;
         }else {return 0;}               
     }
@@ -53,29 +52,34 @@ class Login{
         }
         
         $email_query=<<<FINDUSER
-SELECT id FROM Users where(email="$this->identification");
+SELECT id, passwd FROM Users where(email="$this->identification");
 FINDUSER;
         $nickname_query=<<<FINDUSER
-SELECT id FROM Users where(nickname="$this->identification");
+SELECT id, passwd FROM Users where(nickname="$this->identification");
 FINDUSER;
         
-        switch(1){
-            case 1:
-              if(findUserBy($email_query)){
-                 $this->status_message="Пользователь найден по email";
-                 break;
-              }
-              if(findUserBy($nickname_query)){
-                 $this->status_message="Пользователь найден по nickname";
-                 break;
-              }              
-            default:
-                $this->status_message="Ошибка входа: пользователь не найден"
-                break;
+        if($this->findUserBy($email_query)){
+            if($this->user_password==$this->password){
+                $status_message="Успешный вход";
+            }
+            else{
+                $status_message="Ошибка входа: Неверный пароль";
+            }
+        }
+        else if($this->findUserBy($nickname_query)){
+            if($this->user_password==$this->password){
+                $status_message="Успешный вход";
+            }
+            else{
+                $status_message="Ошибка входа: Неверный пароль";
+            }
+        }
+        else{
+            $status_message="Ошибка входа: пользователь не найден";
         }
 
         $this->db_connection->close();
-        return $this->status_message;        
+        return $status_message;        
     }
 
 }

@@ -17,7 +17,6 @@ class Registration{
     protected $email="";
     protected $nickname="";
     protected $password="";
-    protected $database_connection;
 
     public function __construct($email, $nickname, $password)
     {

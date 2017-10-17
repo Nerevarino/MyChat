@@ -16,7 +16,10 @@ class Login{
 
     protected $db_connection;
     protected $user_id;
+    protected $user_name;
     protected $user_password;
+
+    protected $status_message;
 
 
     public function __construct($identification, $password)
@@ -32,6 +35,7 @@ class Login{
         if($rows_count==1){
             $row=$query_result->fetch_array(MYSQLI_BOTH);
             $this->user_id=$row['id'];
+            $this->user_name=$row['nickname'];
             $this->user_password=$row['passwd'];
             return 1;
         }else {return 0;}               
@@ -52,34 +56,38 @@ class Login{
         }
         
         $email_query=<<<FINDUSER
-SELECT id, passwd FROM Users where(email="$this->identification");
+SELECT id,nickname,passwd FROM Users where(email="$this->identification");
 FINDUSER;
         $nickname_query=<<<FINDUSER
-SELECT id, passwd FROM Users where(nickname="$this->identification");
+SELECT id,nickname,passwd FROM Users where(nickname="$this->identification");
 FINDUSER;
         
         if($this->findUserBy($email_query)){
             if($this->user_password==$this->password){
-                $status_message="Успешный вход";
+                $_SESSION['user_id']=$this->user_id;
+                $_SESSION['user_name']=$this->user_name;
+                header("Location: http://ttbg.su/chat.php");
             }
             else{
-                $status_message="Ошибка входа: Неверный пароль";
+                $this->status_message="Ошибка входа: Неверный пароль";
             }
         }
         else if($this->findUserBy($nickname_query)){
             if($this->user_password==$this->password){
-                $status_message="Успешный вход";
+                $_SESSION['user_id']=$this->user_id;
+                $_SESSION['user_name']=$this->user_name;
+                header("Location: http://ttbg.su/chat.php");                
             }
             else{
-                $status_message="Ошибка входа: Неверный пароль";
+                $this->status_message="Ошибка входа: Неверный пароль";
             }
         }
         else{
-            $status_message="Ошибка входа: пользователь не найден";
+            $this->status_message="Ошибка входа: пользователь не найден";
         }
 
         $this->db_connection->close();
-        return $status_message;        
+        return $this->status_message;        
     }
 
 }
@@ -88,7 +96,9 @@ FINDUSER;
 
 
 //script
-if(!isset($_SESSION)){
+session_start();
+
+if(!isset($_SESSION['user_id'])){
     if(isset($_POST['identification']) and isset($_POST['password'])){
         $login = new Login($_POST['identification'], $_POST['password']);
         $status_message=$login();
@@ -119,10 +129,10 @@ else{
       Nickname or E-mail: <input type="text" name="identification" size="50"></input>
       <br></br>
       <br></br>
-      Password: <input type="text" name="password"  size="50"></input>
+      Password: <input type="password" name="password"  size="50"></input>
       <br></br>
       <br></br>
-      <input type="submit"  value="login"></input>
+      <input type="submit"  value="login"></input> <a href="http://ttbg.su/registration.php">Регистрация</a>
       <br></br>
       <br></br>
       <br><?php echo $status_message; ?></br>

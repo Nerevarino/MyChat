@@ -31,13 +31,6 @@ class Registration{
             return "Ошибка регистрации: Указанные пароли не совпадают";
         }
         
-        $insert_new_user=<<<NEWUSER
-INSERT INTO
-    Users(email,nickname,passwd)
-VALUES
-    ("$this->email","$this->nickname","$this->password")
-;
-NEWUSER;
         $db_connection = new mysqli
         (
             "localhost",
@@ -45,11 +38,20 @@ NEWUSER;
             "msqlarino",
             "srv117239_msqlchat"
         );
+        $query_text=<<<NEWUSER
+INSERT INTO
+    Users(email,nickname,passwd)
+VALUES
+    (?,?,?)
+;
+NEWUSER;
+        $insert_new_user= $db_connection->prepare($query_text);
         if($db_connection->connect_errno){
             setFileText("db_error.log", $db_connection->connect_error);
             header("Location: http://ttbg.su/dbfail.php");
         }
-        $db_connection->query($insert_new_user);
+        $insert_new_user->bind_param("sss", $this->email, $this->nickname, $this->password);
+        $insert_new_user->execute();
         switch($db_connection->errno){
             case 0:  //нет ошибок
                 $status_message="Успешная регистрация";
@@ -107,10 +109,10 @@ else{
        Nickname: <input type="text" name="nickname"  size="50"></input>
        <br></br>
        <br></br>
-       password: <input type="text" name="password"  size="50"></input>
+       password: <input type="password" name="password"  size="50"></input>
        <br></br>
        <br></br>
-       confirm password: <input type="text" name="confirm_password"  size="50"></input>
+       confirm password: <input type="password" name="confirm_password"  size="50"></input>
        <br></br>
        <input type="submit"  value="register"></input>
        <br></br>

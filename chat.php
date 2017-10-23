@@ -38,6 +38,6 @@ else{
         <input type="submit" name="enter" id="enter" value="Send" />
       </form>
     </div>
-    <p><?php echo "Hello, ${_SESSION['user_name']}!"; session_destroy();?></p>
+    <p><?php echo "Hello, ${_SESSION['user_name']}!";?></p>
   </body>
 </html>

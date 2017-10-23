@@ -30,15 +30,13 @@ class Login{
 
     protected function findUserBy($query)
     {
-        $query_result=$this->db_connection->query($query);
-        $rows_count=$query_result->num_rows;
-        if($rows_count==1){
-            $row=$query_result->fetch_array(MYSQLI_BOTH);
-            $this->user_id=$row['id'];
-            $this->user_name=$row['nickname'];
-            $this->user_password=$row['passwd'];
+        $query->execute();
+        $query->store_result();
+        if($query->num_rows==1){
+            $query->fetch();
             return 1;
-        }else {return 0;}               
+        } 
+        else {return 0;}          
     }
 
     public function __invoke()
@@ -55,12 +53,19 @@ class Login{
             header("Location: http://ttbg.su/dbfail.php");
         }
         
-        $email_query=<<<FINDUSER
-SELECT id,nickname,passwd FROM Users where(email="$this->identification");
+        $query_text=<<<FINDUSER
+SELECT id,nickname,passwd FROM Users where(email=?);
 FINDUSER;
-        $nickname_query=<<<FINDUSER
-SELECT id,nickname,passwd FROM Users where(nickname="$this->identification");
+        $email_query=$this->db_connection->prepare($query_text);
+        $email_query->bind_param("s",$this->identification);
+        $email_query->bind_result($this->user_id, $this->user_name, $this->user_password);
+
+        $query_text=<<<FINDUSER
+SELECT id,nickname,passwd FROM Users where(nickname=?);
 FINDUSER;
+        $nickname_query=$this->db_connection->prepare($query_text);
+        $nickname_query->bind_param("s",$this->identification);
+        $nickname_query->bind_result($this->user_id, $this->user_name, $this->user_password);
         
         if($this->findUserBy($email_query)){
             if($this->user_password==$this->password){
@@ -98,12 +103,13 @@ FINDUSER;
 //script
 session_start();
 
+$status_message="";
 if(!isset($_SESSION['user_id'])){
     if(isset($_POST['identification']) and isset($_POST['password'])){
         $login = new Login($_POST['identification'], $_POST['password']);
         $status_message=$login();
     }
-    else{$status_message="";}
+    else{}
 }
 else{
     header('Location: http://ttbg.su/chat.php');

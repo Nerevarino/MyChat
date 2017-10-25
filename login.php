@@ -138,7 +138,7 @@ else{
       Password: <input type="password" name="password"  size="50"></input>
       <br></br>
       <br></br>
-      <input type="submit"  value="login"></input> <a href="http://ttbg.su/registration.php">Регистрация</a>
+      <input type="submit"  value="Войти"></input> <a href="http://ttbg.su/registration.php">Зарегистрироваться</a>
       <br></br>
       <br></br>
       <br><?php echo $status_message; ?></br>

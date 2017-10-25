@@ -21,23 +21,45 @@ else{
   <head>
     <title>Мой чат</title>
     <style>@import url('style.css');</style>
+    <script type="text/javascript">
+          function ajaxRequest()
+          {
+            try // Браузер не относится к семейству IE?
+            {
+              var request = new XMLHttpRequest();
+            }
+            catch(e1)
+            {
+              try // Это IE 6+?
+              {
+                request = new ActiveXObject("Msxml2.XMLHTTP");
+              }
+              catch(e2)
+              {
+                try // Это IE 5?
+                {
+                  request = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                catch(e3) // Данный браузер не поддерживает AJAX
+                {
+                  request = false;
+                }
+              }
+            }
+            return request;
+          }
+
+          
+    </script>
   </head>
   <body>
     
     <div id="interface">
-      <a href="http://ttbg.su/logout.php">Logout</a>
-      <div id="chatview">
-        <?php
-          // foreach($visible_messages as $message){
-          //     echo "<p>$message</p>\n";
-          // }
-        ?>
-      </div>
-      <form id="form" method="post" action="index.php">
-        <input name="message_text" type="text" id="usermsg" size="63" />
-        <input type="submit" name="enter" id="enter" value="Send" />
-      </form>
+      <a href="http://ttbg.su/logout.php">Выйти</a>
+      <div id="chatview"/>
+      <input id="messageText" type="text" size="63" />
+      <input id="sendMessage" type="submit"  value="Отправить" />
     </div>
-    <p><?php echo "Hello, ${_SESSION['user_name']}!";?></p>
+    <p><?php echo "Hello, {$_SESSION['user_name']}!";?></p>
   </body>
 </html>

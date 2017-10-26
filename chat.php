@@ -49,6 +49,10 @@ else{
             return request;
           }
 
+          function onSend()
+          {
+              
+          }
           
     </script>
   </head>
@@ -56,10 +60,22 @@ else{
     
     <div id="interface">
       <a href="http://ttbg.su/logout.php">Выйти</a>
-      <div id="chatview"/>
-      <input id="messageText" type="text" size="63" />
-      <input id="sendMessage" type="submit"  value="Отправить" />
+      <div id="chatview">
+        <?php
+          // foreach($visible_messages as $message){
+          //     echo "<p>$message</p>\n";
+          // }
+        ?>
+      </div>
+      <div id="form" >
+        <input id="messageText"  type="text"  size="63" />
+        <button id="sendMessage"   onclick="onSend();">Send </button>
+      </div>
     </div>
     <p><?php echo "Hello, {$_SESSION['user_name']}!";?></p>
   </body>
 </html>
+
+
+
+// https://github.com/bagau/bchat/blob/master/websocket.php

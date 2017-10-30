@@ -1,6 +1,19 @@
 <?php
 
 
+//definitions
+
+//definitions
+
+
+
+
+
+
+
+
+
+//script
 session_start();
 if(isset($_SESSION['user_id']))
 {
@@ -9,7 +22,7 @@ if(isset($_SESSION['user_id']))
 else{        
     header('Location: http://ttbg.su/login.php');
 }
-
+//script
 
 ?>
 
@@ -51,7 +64,28 @@ else{
 
           function onSend()
           {
-              
+              var socket=new WebSocket("ws://ttbg.su:9000/websockcheck.php");
+
+              socket.onopen = function() {
+                  alert("Соединение установлено.");
+              };
+
+              socket.onclose = function(event) {
+                  if (event.wasClean) {
+                      alert('Соединение закрыто чисто');
+                  } else {
+                      alert('Обрыв соединения'); // например, "убит" процесс сервера
+                  }
+                  alert('Код: ' + event.code + ' причина: ' + event.reason);
+              };
+
+              socket.onmessage = function(event) {
+                  alert("Получены данные " + event.data);
+              };
+
+              socket.onerror = function(error) {
+                  alert("Ошибка " + error.message);
+              };
           }
           
     </script>

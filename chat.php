@@ -35,32 +35,32 @@ else{
     <title>Мой чат</title>
     <style>@import url('style.css');</style>
     <script type="text/javascript">
-          function ajaxRequest()
-          {
-            try // Браузер не относится к семейству IE?
-            {
-              var request = new XMLHttpRequest();
-            }
-            catch(e1)
-            {
-              try // Это IE 6+?
-              {
-                request = new ActiveXObject("Msxml2.XMLHTTP");
-              }
-              catch(e2)
-              {
-                try // Это IE 5?
-                {
-                  request = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                catch(e3) // Данный браузер не поддерживает AJAX
-                {
-                  request = false;
-                }
-              }
-            }
-            return request;
-          }
+          // function ajaxRequest()
+          // {
+          //   try // Браузер не относится к семейству IE?
+          //   {
+          //     var request = new XMLHttpRequest();
+          //   }
+          //   catch(e1)
+          //   {
+          //     try // Это IE 6+?
+          //     {
+          //       request = new ActiveXObject("Msxml2.XMLHTTP");
+          //     }
+          //     catch(e2)
+          //     {
+          //       try // Это IE 5?
+          //       {
+          //         request = new ActiveXObject("Microsoft.XMLHTTP");
+          //       }
+          //       catch(e3) // Данный браузер не поддерживает AJAX
+          //       {
+          //         request = false;
+          //       }
+          //     }
+          //   }
+          //   return request;
+          // }
 
           function onSend()
           {

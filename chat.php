@@ -34,76 +34,20 @@ else{
   <head>
     <title>Мой чат</title>
     <style>@import url('style.css');</style>
-    <script type="text/javascript">
-          // function ajaxRequest()
-          // {
-          //   try // Браузер не относится к семейству IE?
-          //   {
-          //     var request = new XMLHttpRequest();
-          //   }
-          //   catch(e1)
-          //   {
-          //     try // Это IE 6+?
-          //     {
-          //       request = new ActiveXObject("Msxml2.XMLHTTP");
-          //     }
-          //     catch(e2)
-          //     {
-          //       try // Это IE 5?
-          //       {
-          //         request = new ActiveXObject("Microsoft.XMLHTTP");
-          //       }
-          //       catch(e3) // Данный браузер не поддерживает AJAX
-          //       {
-          //         request = false;
-          //       }
-          //     }
-          //   }
-          //   return request;
-          // }
-
-          function onSend()
-          {
-              var socket=new WebSocket("ws://ttbg.su:9000/websockcheck.php");
-
-              socket.onopen = function() {
-                  alert("Соединение установлено.");
-              };
-
-              socket.onclose = function(event) {
-                  if (event.wasClean) {
-                      alert('Соединение закрыто чисто');
-                  } else {
-                      alert('Обрыв соединения'); // например, "убит" процесс сервера
-                  }
-                  alert('Код: ' + event.code + ' причина: ' + event.reason);
-              };
-
-              socket.onmessage = function(event) {
-                  alert("Получены данные " + event.data);
-              };
-
-              socket.onerror = function(error) {
-                  alert("Ошибка " + error.message);
-              };
-          }
-          
-    </script>
+    <script type="text/javascript" src="myajax.js"></script>
   </head>
-  <body>
-    
-    <div id="interface">
+  <body>    
+    <div id="interface">      
       <a href="http://ttbg.su/logout.php">Выйти</a>
       <div id="chatview">
+        
         <?php
-          // foreach($visible_messages as $message){
-          //     echo "<p>$message</p>\n";
-          // }
+          
         ?>
       </div>
-      <div id="form" >
-        <input id="messageText"  type="text"  size="63" />
-        <button id="sendMessage"   onclick="onSend();">Send </button>
+      <div id="form">
+        <input id="messageBox"  type="text"  size="63" />
+        <button id="sendMessage" onclick="onSend();">Send</button>
       </div>
     </div>
     <p><?php echo "Hello, {$_SESSION['user_name']}!";?></p>

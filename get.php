@@ -17,7 +17,7 @@ if(isset($_SESSION['user_id']))
     }
 
     $get_messages_query=<<<GETMESSAGES
-SELECT nickname, text FROM Messages LEFT JOIN Users ON Users.id = Messages.user_id ORDER BY Messages.id DESC LIMIT 20;
+SELECT nickname, text FROM Messages LEFT JOIN Users ON Users.id = Messages.user_id ORDER BY Messages.id ASC LIMIT 20;
 GETMESSAGES;
     $get_messages=$db_connection->prepare($get_messages_query);
     if($db_connection->connect_errno){

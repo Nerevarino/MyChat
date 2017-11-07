@@ -42,9 +42,9 @@ function onSend()
     {
       if(this.status==200)
       {
-        alert("Ответ сервера: " + this.responseText);
+        // alert("Ответ сервера: " + this.responseText);
       }
-      else alert("Ошибка AJAX: " + this.statusText);
+      // else alert("Ошибка AJAX: " + this.statusText);
     }
     else
     {
@@ -52,7 +52,7 @@ function onSend()
     }
   }     
 
-  var params='phrase=' + messageText;
+  var params='message=' + messageText;
   request.send(params);
   messageBox.value="";
 }

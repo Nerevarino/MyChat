@@ -35,15 +35,15 @@ else{
     <title>Мой чат</title>
     <style>@import url('style.css');</style>
     <script type="text/javascript" src="myajax.js"></script>
+    <script type="text/javascript" src="getmes.js"></script>
   </head>
   <body>    
     <div id="interface">      
       <a href="http://ttbg.su/logout.php">Выйти</a>
-      <div id="chatview">
-        
-        <?php
-          
-        ?>
+      <div id="chatview" >
+        <script type="text/javascript">
+          setInterval(getMessages,500);
+        </script>
       </div>
       <div id="form">
         <input id="messageBox"  type="text"  size="63" />

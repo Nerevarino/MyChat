@@ -1,4 +1,4 @@
-MyChat: makefile index.php login.php registration.php chat.php dbfail.php logout.php websocket.php post.php myajax.js
+MyChat: makefile index.php login.php registration.php chat.php dbfail.php logout.php websocket.php post.php myajax.js getmes.js get.php
 	scp index.php srv117239@mybeta:~/ttbg.su/index.php
 	scp login.php srv117239@mybeta:~/ttbg.su/login.php
 	scp registration.php srv117239@mybeta:~/ttbg.su/registration.php
@@ -8,3 +8,5 @@ MyChat: makefile index.php login.php registration.php chat.php dbfail.php logout
 	scp websocket.php srv117239@mybeta:~/ttbg.su/websocket.php
 	scp post.php srv117239@mybeta:~/ttbg.su/post.php
 	scp myajax.js srv117239@mybeta:~/ttbg.su/myajax.js
+	scp getmes.js srv117239@mybeta:~/ttbg.su/getmes.js
+	scp get.php srv117239@mybeta:~/ttbg.su/get.php

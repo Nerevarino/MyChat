@@ -2,7 +2,7 @@
 
 namespace Edronov\Chat;
 
-use Edronov\Chat\File as File;
+require 'File.php';
 
 class Registration
 {

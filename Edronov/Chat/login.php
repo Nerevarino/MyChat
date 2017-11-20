@@ -2,7 +2,7 @@
 
 namespace Edronov\Chat;
 
-require 'Login.php'
+require 'Login.php';
 
 $login_process = new Login();
 
@@ -15,6 +15,7 @@ $login_process = new Login();
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset = "utf-8"></meta>
         <title>Мой чат</title>
     </head>
     <body>
@@ -26,12 +27,10 @@ $login_process = new Login();
             <br></br>
             <br></br>
             <input type = "submit"  value = "Войти"></input>
-            <a href = "http://ttbg.su/registration.php">Зарегистрироваться</a>
+            <a href = "http://ttbg.su/Edronov/Chat/registration.php">Зарегистрироваться</a>
             <br></br>
             <br></br>
             <br><?php $login_process->printStatusMessage(); ?></br>
         </form>
     </body>
 </html>
-
-

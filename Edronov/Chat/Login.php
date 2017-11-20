@@ -101,5 +101,3 @@ VERIFYUSER;
         echo $this->status_message;
     }
 }
-
-

@@ -2,6 +2,8 @@
 
 namespace Edronov\Chat;
 
+require 'Login.php'
+
 $login_process = new Login();
 
 ?>

@@ -1,8 +1,12 @@
 <?php
 
-if ($GLOBALS['db_error'] != "") {
+session_start();
+if (isset($_SESSION['db_error'])) {
+    unset($_SESSION['db_error']);
     header("Location: http://ttbg.su/login.php");
-} else {}
+} else {
+    header("Location: http://ttbg.su/login.php");
+}
 
 ?>
 

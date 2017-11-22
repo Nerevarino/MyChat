@@ -1,6 +1,6 @@
 <?php
 
-namespace Edronov/Chat;
+namespace Edronov\Chat;
 
 class File
 {

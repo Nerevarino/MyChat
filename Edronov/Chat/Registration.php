@@ -2,6 +2,8 @@
 
 namespace Edronov\Chat;
 
+use \mysqli as mysqli;
+
 require 'File.php';
 
 class Registration
@@ -72,15 +74,15 @@ INSERT INTO
 VALUES
     (?, ?, ?)
 ;
-NEWUSER;        
+NEWUSER;
         $insert_user = $db_connection->prepare($query);
         $insert_user->bind_param("sss", $this->email, $this->nickname, $this->password);
         $insert_user->execute();
-        switch ($db_connection->errno) {
-            case ADD_USER_SUCCESS:
+        switch ($insert_user->errno) {
+            case self::ADD_USER_SUCCESS:
                 $this->status_message = "Успешная регистрация";
                 break;
-            case USER_ALREADY_EXISTS:
+            case self::USER_ALREADY_EXISTS:
                 $this->status_message = "Ошибка регистрации: пользователь уже существует в системе";
                 break;
             default:
@@ -92,7 +94,7 @@ NEWUSER;
 
 
 
-    protected function printStatusMessage()
+    public function printStatusMessage()
     {
         echo $this->status_message;
     }

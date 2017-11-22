@@ -2,6 +2,9 @@
 
 namespace Edronov\Chat;
 
+use \mysqli as mysqli;
+
+
 class Login
 {
 
@@ -10,7 +13,7 @@ class Login
     protected $nickname_or_email = null;
     protected $password = null;
     
-    public function __construct($identification, $password)
+    public function __construct()
     {
         session_start();
         if (!$this->userLogged()) {
@@ -22,7 +25,7 @@ class Login
                 $this->status_message  = "";
             }
         } else {
-            header('Location: http://ttbg.su/chat.php');
+            header('Location: http://ttbg.su/Edronov/Chat/chat.php');
         }        
         
     }
@@ -45,32 +48,34 @@ class Login
             header("Location: http://ttbg.su/db_error.php");
         }
 
-        $verification_query = <<<VERIFYUSER
+        $query = <<<VERIFYUSER
 SELECT id, nickname FROM Users 
     WHERE (nickname=? AND passwd=?)
     OR    (email=? AND passwd=?);
 VERIFYUSER;
-        
-        $db_connection->prepare($verification_query);
-        $verification_query->bind_param(
+
+        $verification = $db_connection->prepare($query);
+        $verification->bind_param(
             "ssss",
-            $this->$nickname_or_email,
+            $this->nickname_or_email,
             $this->password,
-            $this->$nickname_or_email,
+            $this->nickname_or_email,
             $this->password
         );
 
         $user_id = null;
         $user_nickname = null;
-        $verification_query->bind_result($user_id, $user_nickname);
-        $verification_query->execute();
+        $verification->bind_result($user_id, $user_nickname);
+        $verification->execute();
+        $verification->store_result();
 
-        if ($verification_query->num_rows == 1) {
-            $verification_query->fetch();
+        if ($verification->num_rows == 1) {
+            $verification->fetch();
             $_SESSION['user_id'] = $user_id;
             $_SESSION['user_nickname'] = $user_nickname;
             $db_connection->close();
-            header("Location: http://ttbg.su/chat.php");
+            header("Location: http://ttbg.su/Edronov/Chat/chat.php");
+            // $this->status_message = "Вы успешно вошли!";
         } else {
             $db_connection->close();
             $this->status_message = "Ошибка входа: неверный пользователь или пароль";

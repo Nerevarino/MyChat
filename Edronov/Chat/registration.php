@@ -1,5 +1,7 @@
 <?php
 
+namespace Edronov\Chat;
+
 require 'Registration.php';
 
 $reg_process = new Registration();

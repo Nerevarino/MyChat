@@ -2,7 +2,9 @@
 
 namespace Edronov\Chat\Classes;
 
-class Logout
+require 'PhpPage.php';
+
+class Logout extends PhpPage
 {
     public function __construct()
     {
@@ -16,5 +18,10 @@ class Logout
     protected function userLogged()                                           //проверка, залогинен ли пользователь
     {
         return isset($_SESSION['user_id']);
-    }            
+    }
+
+    public function render()
+    {
+        
+    }
 }

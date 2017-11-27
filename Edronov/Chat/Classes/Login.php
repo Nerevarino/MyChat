@@ -2,10 +2,12 @@
 
 namespace Edronov\Chat\Classes;              
 
-use \mysqli as mysqli;                        
+use \mysqli as mysqli;
+
+require 'PhpPage.php';                                                                              //базовый класс
 
 
-class Login
+class Login extends PhpPage
 {
 
     protected $status_message = "";
@@ -86,9 +88,32 @@ VERIFYUSER;
     {
         return isset($_SESSION['user_id']);
     }
-    
-    public function printStatusMessage()                  //Печать на странице логина статус-сообщения пользователю
+
+    public function render()                                                                      //печать страницы
     {
-        echo $this->status_message;
+        echo <<<PAGE
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8"></meta>
+        <title>Мой чат</title>
+    </head>
+    <body>
+        <form method = "post">
+            Nickname or E-mail: <input type = "text" name = "nickname_or_email" size = "50"></input>
+            <br></br>
+            <br></br>
+            Password: <input type = "password" name = "password"  size = "50"></input>
+            <br></br>
+            <br></br>
+            <input type = "submit"  value = "Войти"></input>
+            <a href = "http://ttbg.su/Edronov/Chat/SideEffects/registration.php">Зарегистрироваться</a>
+            <br></br>
+            <br></br>
+            <br> {$this->status_message} </br>
+        </form>
+    </body>
+</html>
+PAGE;
     }
 }

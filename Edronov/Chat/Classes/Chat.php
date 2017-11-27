@@ -4,10 +4,10 @@ namespace Edronov\Chat\Classes;
 
 use \mysqli as mysqli;         				
 
-require 'File.php';                         //класс-утилита для работы сфайлами
+require 'PhpPage.php';                         //базовый класс
 
 
-class Chat                                  
+class Chat extends PhpPage                                 
 {
     public function __construct()           
     {
@@ -21,7 +21,7 @@ class Chat
         }
     }
     
-    public function printMessages()         //печать существующих и видимых (по размерам окна чата) сообщений чата 
+    public function getMessages()         //печать существующих и видимых (по размерам окна чата) сообщений чата 
     {
         $db_connection = new mysqli (       //соединяемся с БД
             "localhost",
@@ -54,15 +54,17 @@ GETMESSAGES;
         $get_messages->execute();
         $get_messages->store_result();
 
+        $messages_text = null;                                //переменная, содержащая весь текст видимых сообщений
         while ($get_messages->fetch()) {                      //разбираем построчно ответ БД
-            echo $nickname . ": ". $message .  "<br></br>";   //печатаем в окно чата "имя пользователя: сообщение"
-        }
-        $db_connection->close();                              
+           $messages_text = $messages_text . $nickname . ": ". $message .  "<br></br>";   
+        }                                                                  //печатаем "имя пользователя: сообщение"
+        $db_connection->close();
+        return $messages_text;
     }
 
-    public function printUserWelcome()                        //печать "приветствия" залогиневшемуся пользователю
+    public function getUserWelcome()                        //"приветствие" залогиневшемуся пользователю
     {
-        echo "Hello, {$_SESSION['user_nickname']}!"; 
+        return "Hello, {$_SESSION['user_nickname']}!"; 
     }
 
     protected function userLogged()                  //проверка, залогинен ли пользователь
@@ -110,5 +112,31 @@ INSERTMESSAGE;
         $insert_new_message->bind_param("is", $user_id, $messageText); 
         $insert_new_message->execute();                                
         $db_connection->close();                                       
-    }    
+    }
+
+    public function render()
+    {
+        echo <<<PAGE
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Мой чат</title>
+        <style>@import url('../Design/style.css');</style>
+    </head>
+    <body>    
+        <div id = "interface">      
+            <a href = "http://ttbg.su/Edronov/Chat/SideEffects/logout.php">Выйти</a>
+            <div id = "chatview">
+                {$this->getMessages()}
+            </div>
+            <form id = "form" method = "post" action = "chat.php">
+                <input id = "messageBox"  name = "message" type = "text"  size = "63" />
+                <input id = "sendMessage" type = "submit" value = "Send"></input>
+            </form>
+        </div>
+        <p> {$this->getUserWelcome()} </p>
+    </body>
+</html>
+PAGE;
+    }
 }

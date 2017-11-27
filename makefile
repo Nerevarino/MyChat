@@ -1,4 +1,4 @@
-MyChat: makefile login Log registration Reg File  chat Chat db_error logout Logout #post Post myajax getmes get
+MyChat: makefile login Log registration Reg File  chat Chat db_error logout Logout PhpPage
 
 login: Edronov/Chat/SideEffects/login.php
 	scp Edronov/Chat/SideEffects/login.php srv117239@mybeta:~/ttbg.su/Edronov/Chat/SideEffects/login.php
@@ -20,14 +20,7 @@ logout: Edronov/Chat/SideEffects/logout.php
 	scp Edronov/Chat/SideEffects/logout.php srv117239@mybeta:~/ttbg.su/Edronov/Chat/SideEffects/logout.php
 Logout: Edronov/Chat/Classes/Logout.php
 	scp Edronov/Chat/Classes/Logout.php srv117239@mybeta:~/ttbg.su/Edronov/Chat/Classes/Logout.php
-# post: Edronov/Chat/post.php
-# 	scp Edronov/Chat/post.php srv117239@mybeta:~/ttbg.su/Edronov/Chat/post.php
-# Post: Edronov/Chat/Post.php
-# 	scp Edronov/Chat/Post.php srv117239@mybeta:~/ttbg.su/Edronov/Chat/Post.php
-# myajax: myajax.js
-# 	scp myajax.js srv117239@mybeta:~/ttbg.su/myajax.js
-# getmes: getmes.js
-# 	scp getmes.js srv117239@mybeta:~/ttbg.su/getmes.js
-# get: Edronov/Chat/get.php
-# 	scp Edronov/Chat/get.php srv117239@mybeta:~/ttbg.su/Edronov/Chat/get.php
+PhpPage: Edronov/Chat/Classes/PhpPage.php
+	scp Edronov/Chat/Classes/PhpPage.php srv117239@mybeta:~/ttbg.su/Edronov/Chat/Classes/PhpPage.php
+
 

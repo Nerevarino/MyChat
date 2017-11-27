@@ -7,30 +7,5 @@ use Edronov\Chat\Classes\Registration as Registration;
 require '../Classes/Registration.php';
 
 $reg_process = new Registration();                                                    //создаем процесс регистрации
+$reg_process->render();                                                                         //печатаем страницу
 
-?>
-
-
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset = "utf-8"></meta>
-		<title>Регистрация</title>
-	</head>
-	<body>
-        <form method = "post">
-            E-mail: <input type = "text" name = "email" size = "50"></input>
-            <br></br>
-            <br></br>
-            Nickname: <input type = "text" name = "nickname"  size = "50"></input>
-            <br></br>
-            <br></br>
-            password: <input type = "password" name = "password"  size = "50"></input>
-            <br></br>
-            <br></br>
-            <input type = "submit"  value = "register"></input>
-            <br></br>
-            <br><?php $reg_process->printStatusMessage(); ?></br>         <!-- печать статус-сообщения страницы -->
-        </form>
-	</body>
-</html>

@@ -1,10 +1,12 @@
 <?php 
 
-namespace Edronov\Chat;
+namespace Edronov\Chat\SideEffects;
 
-require 'Login.php';
+use Edronov\Chat\Classes\Login as Login;
 
-$login_process = new Login();
+require '../Classes/Login.php';
+
+$login_process = new Login();                                                               //создаем процесс входа
 
 ?>
 
@@ -27,10 +29,10 @@ $login_process = new Login();
             <br></br>
             <br></br>
             <input type = "submit"  value = "Войти"></input>
-            <a href = "http://ttbg.su/Edronov/Chat/registration.php">Зарегистрироваться</a>
+            <a href = "http://ttbg.su/Edronov/Chat/SideEffects/registration.php">Зарегистрироваться</a>
             <br></br>
             <br></br>
-            <br><?php $login_process->printStatusMessage(); ?></br>
+            <br><?php $login_process->printStatusMessage(); ?></br> <!-- печатаем статус-сообщение пользователю -->
         </form>
     </body>
 </html>

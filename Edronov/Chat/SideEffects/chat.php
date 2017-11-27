@@ -1,10 +1,12 @@
 <?php
 
-namespace Edronov\Chat;
+namespace Edronov\Chat\SideEffects;
 
-require 'Chat.php';
+use Edronov\Chat\Classes\Chat as Chat;
 
-$chat_object = new Chat();
+require '../Classes/Chat.php';
+
+$chat_object = new Chat();                                                                    //создаем обЪект чата
 
 ?>
 
@@ -15,11 +17,11 @@ $chat_object = new Chat();
 <html>
     <head>
         <title>Мой чат</title>
-        <style>@import url('style.css');</style>
+        <style>@import url('../Design/style.css');</style>
     </head>
     <body>    
         <div id = "interface">      
-            <a href = "http://ttbg.su/Edronov/Chat/logout.php">Выйти</a>
+            <a href = "http://ttbg.su/Edronov/Chat/SideEffects/logout.php">Выйти</a>
             <div id = "chatview">
                 <?php $chat_object->printMessages(); ?>
             </div>
@@ -28,6 +30,6 @@ $chat_object = new Chat();
                 <input id = "sendMessage" type = "submit" value = "Send"></input>
             </form>
         </div>
-        <p><?php $chat_object->printUserWelcome(); ?></p>
+        <p><?php $chat_object->printUserWelcome(); ?></p>    <!-- печать приветствующего сообщения пользователю -->
     </body>
 </html>

@@ -1,10 +1,12 @@
 <?php
 
-namespace Edronov\Chat;
+namespace Edronov\Chat\SideEffects;
 
-require 'Registration.php';
+use Edronov\Chat\Classes\Registration as Registration;
 
-$reg_process = new Registration();
+require '../Classes/Registration.php';
+
+$reg_process = new Registration();                                                    //создаем процесс регистрации
 
 ?>
 
@@ -28,7 +30,7 @@ $reg_process = new Registration();
             <br></br>
             <input type = "submit"  value = "register"></input>
             <br></br>
-            <br><?php $reg_process->printStatusMessage(); ?></br>
+            <br><?php $reg_process->printStatusMessage(); ?></br>         <!-- печать статус-сообщения страницы -->
         </form>
 	</body>
 </html>

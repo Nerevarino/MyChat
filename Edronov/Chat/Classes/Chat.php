@@ -9,18 +9,19 @@ require 'PhpPage.php';                         //базовый класс
 
 class Chat extends PhpPage                                 
 {
-    public function __construct()           
+    public function __construct()
     {
-        session_start();                                                              
-        if ($this->userLogged()) { 
-            if ($this->existPostData()) {   
-                $this->postMessage();       
-            } else {}                       
+        session_start();
+        if ($this->userLogged()) {
+            if ($this->existPostData()) {
+                $this->postMessage();
+            } else {
+            }
         } else {                         //Если пользователь еще не залогинен - сделать редирект на страницу логина 
-            header("Location: http://ttbg.su/Edronov/Chat/SideEffects/login.php");  
+            header("Location: http://ttbg.su/Edronov/Chat/SideEffects/login.php");
         }
     }
-    
+
     public function getMessages()         //печать существующих и видимых (по размерам окна чата) сообщений чата 
     {
         $db_connection = new mysqli (       //соединяемся с БД
@@ -30,9 +31,8 @@ class Chat extends PhpPage
             "srv117239_msqlchat"
         );
         if ($db_connection->connect_errno) { //если при соединении с БД произошла ошибка - то пишем об этом в файл
-            $log_file = new File("../logs/db_error.log");  
-            $log_file->setText("db_error.log", $db_connection->connect_error);
-            header("Location: http://ttbg.su/Edronov/Chat/SideEffects/db_error.php");//редир на стр с сообщ о ошибк
+            $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);
+            header("Location: http://ttbg.su/Edronov/Chat/SideEffects/db_error.php");//редир на стр с сообщ о ошиб
         }
         //задаем текст запроса к БД для получения видимых сообщений
         $query = <<<GETMESSAGES
@@ -41,8 +41,7 @@ GETMESSAGES;
 
         $get_messages = $db_connection->prepare($query);      //создаем пре-запрос к базе используя текст запроса
         if ($db_connection->connect_errno) {                  //если при создании пре-запроса возникла ошибка
-            $log_file = new File("../logs/db_error.log");     //обращаемся к файловому менеджеру за файлом логов БД
-            $log_file->setText("db_error.log", $db_connection->connect_error);  
+            $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);
             $db_connection->close();
             header("Location: http://ttbg.su/Edronov/Chat/SideEffects/db_error.php"); //редир на стр с сообщ о ошибк
         }
@@ -89,9 +88,8 @@ GETMESSAGES;
             "srv117239_msqlchat"                     
         );
         if ($db_connection->connect_errno) {                   //Если при соединении с БД произошла ошибка 
-            $log_file = new File("../logs/db_error.log");      //обращаемся к файловому менеджеру за файлом логов БД
-            $log_file->setText("db_error.log", $db_connection->connect_error);        
-            $db_connection->close();                                                   
+            $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);
+            $db_connection->close();
             header("Location: http://ttbg.su/Edronov/Chat/SideEffects/db_error.php"); //редир на стр с сообщ о ошибк
         }
         //задаем текст запроса к БД для записи нового сообщения пользователя
@@ -104,8 +102,7 @@ VALUES
 INSERTMESSAGE;
         $insert_new_message = $db_connection->prepare($query);//создаем пре-запрос к базе используя текст запроса
         if ($db_connection->connect_errno) {                  //если при создании пре-запроса возникла ошибка
-            $log_file = new File("../logs/db_error.log");     //обращаемся к файловому менеджеру за файлом логов БД
-            $log_file->setText("db_error.log", $db_connection->connect_error); 
+            $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);
             $db_connection->close();                                            
             header("Location: http://ttbg.su/Edronov/Chat/SideEffects/chat.php");   //редир на стр с сообщ о ошибк
         }

@@ -4,8 +4,8 @@ namespace Edronov\Chat\SideEffects;
 
 use Edronov\Chat\Classes\Registration as Registration;
 
-require '../Classes/Registration.php';
+require 'Registration.php';
 
-$reg_process = new Registration();                                                    //создаем процесс регистрации
-$reg_process->render();                                                                         //печатаем страницу
+$reg_process = new Registration();                                                        //создаем процесс регистрации
+$reg_process->render();                                                                             //печатаем страницу
 

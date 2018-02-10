@@ -17,21 +17,19 @@ class Login extends PhpPage
     public function __construct()
     {
         session_start();
-        if (!$this->userLogged()) {                                            //если пользователь еще не залогинен
-            if ($this->existFormData()) {                     //если пользователь отправил идентификационные данные 
-                $this->nickname_or_email = $_POST['nickname_or_email'];
-                $this->password = $_POST['password'];  
-                $this->verify();
-            } else { //если нет, то просто грузим страницу, сообщение страницы пользователю пока пустое
-                $this->status_message  = "";
-            }
-        } else {                     //Если пользователь уже залогинен, то сделать редирект на страницу самого чата
-            header('Location: http://ttbg.su/Edronov/Chat/SideEffects/chat.php');
+        if (!$this->userLogged()) {                                                //если пользователь еще не залогинен
+            if ($this->existFormData()) {                         //если пользователь отправил идентификационные данные
+                $this->nickname_or_email = $_POST['nickname_or_email'];          //записываем пользователя в переменную
+                $this->password = $_POST['password'];                                  //записываем пароль в переменную
+                $this->verify();                                        //проверяем идентификатор пользователя и пароль
+            } else {}                                            //если нет данных от пользователя, то ничего не делаем
+        } else {                                        //Если пользователь уже залогинен
+            header('Location: http://ttbg.su/chat.php');                              //редирект на страницу чата
         }        
         
     }
 
-    protected function verify()                                                          //авторизация пользователя
+    protected function verify()                                                              //авторизация пользователя
     {
         $db_connection = new mysqli (                                                            //связываемся с БД
             "localhost",
@@ -39,12 +37,10 @@ class Login extends PhpPage
             "msqlarino",
             "srv117239_msqlchat"
         );
-        if ($db_connection->connect_errno) {                  //если связаться не удалось,то пишем об ошибке в файл
-            $log_file = new File("../logs/db_error.log");
-            $log_file->setText($db_connection->connect_error);
-            $_SESSION['db_error'] = "Ошибка доступа к базе данных";
-            header("Location: http://ttbg.su/Edronov/Chat/SideEffects/db_error.php"); //редирект на страницу ошибки
+        if ($db_connection->connect_errno) {                                              //если ошибка соединения с БД
+            $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);    //пишем ошибку в файл
         }
+
         //создаем текст запроса к БД на проверку наличия пользователя с такими идентификационными данными
         $query = <<<VERIFYUSER
 SELECT id, nickname FROM Users 
@@ -52,8 +48,8 @@ SELECT id, nickname FROM Users
     OR    (email=? AND passwd=?);
 VERIFYUSER;
 
-        $verification = $db_connection->prepare($query);
-        $verification->bind_param(
+        $verification = $db_connection->prepare($query);                                          //готовим запрос к БД
+        $verification->bind_param(                             //связываем переменные с данными пользователя с запросом
             "ssss",
             $this->nickname_or_email,
             $this->password,
@@ -61,35 +57,35 @@ VERIFYUSER;
             $this->password
         );
 
-        $user_id = null;                         //создаем переменные, в которые будем делать вывод строк ответа БД
+        $user_id = null;                                             //создаем переменные, в которые передадим ответ БД
         $user_nickname = null;
-        $verification->bind_result($user_id, $user_nickname);             //связываем эти переменные с пре-запросом
-        $verification->execute();                                          //выполняем запрос и сохраняем результат
-        $verification->store_result();
+        $verification->bind_result($user_id, $user_nickname);          //связываем эти переменные с запросом
+        $verification->execute();                                                                    //выполняем запрос
+        $verification->store_result();                                     //размещаем результат в связанных переменных
 
-        if ($verification->num_rows == 1) {                                  //если по запросу нашелся пользователь
+        if ($verification->num_rows == 1) {                                      //если по запросу нашелся пользователь
             $verification->fetch();
-            $_SESSION['user_id'] = $user_id;                   //записать в сессию id и ник пользователя
-            $_SESSION['user_nickname'] = $user_nickname;
-            $db_connection->close();
-            header("Location: http://ttbg.su/Edronov/Chat/SideEffects/chat.php");//редирект на страницу самого чата
-        } else {   //Если пользователь не найден по идентификационным данным - то написать на странице сообщение 
-            $db_connection->close();
-            $this->status_message = "Ошибка входа: неверный пользователь или пароль";
+            $_SESSION['user_id'] = $user_id;                                        //записать в сессию id пользователя
+            $_SESSION['user_nickname'] = $user_nickname;                           //записать в сессию ник пользователя
+            $db_connection->close();                                                             //закрываем связь с БД
+            header("Location: http://ttbg.su/chat.php");                              //редирект на страницу чата
+        } else {                                              //если пользователь не найден по идентификационным данным
+            $db_connection->close();                                                             //закрываем связь с БД
+            $this->status_message = "Ошибка входа: неверный пользователь или пароль"; //сообщение страницы пользователю
         }        
     }
     
-    protected function existFormData()                        //Пришли ли от пользователя идентификационные данные?
+    protected function existFormData()                            //Пришли ли от пользователя идентификационные данные?
     {
         return isset($_POST['nickname_or_email']) and isset($_POST['password']);
     }
 
-    protected function userLogged()                                                //Залогинен ли уже пользователь?
+    protected function userLogged()                                                    //Залогинен ли уже пользователь?
     {
         return isset($_SESSION['user_id']);
     }
 
-    public function render()                                                                      //печать страницы
+    public function render()                                                    //печать страницы (получение html кода)
     {
         echo <<<PAGE
 <!DOCTYPE html>
@@ -107,7 +103,7 @@ VERIFYUSER;
             <br></br>
             <br></br>
             <input type = "submit"  value = "Войти"></input>
-            <a href = "http://ttbg.su/Edronov/Chat/SideEffects/registration.php">Зарегистрироваться</a>
+            <a href = "http://ttbg.su/registration.php">Зарегистрироваться</a>
             <br></br>
             <br></br>
             <br> {$this->status_message} </br>

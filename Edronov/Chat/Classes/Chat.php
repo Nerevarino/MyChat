@@ -12,86 +12,84 @@ class Chat extends PhpPage
     public function __construct()
     {
         session_start();
-        if ($this->userLogged()) {
-            if ($this->existPostData()) {
-                $this->postMessage();
-            } else {
-            }
-        } else {                         //Если пользователь еще не залогинен - сделать редирект на страницу логина 
-            header("Location: http://ttbg.su/Edronov/Chat/SideEffects/login.php");
+        if ($this->userLogged()) {                                  //Если пользователь залогинен
+            if ($this->existPostData()) {                           //Отправил ли пользователь сообщение
+                $this->postMessage();                               //принять и обработать сообщение
+            } else {}
+        } else {                                                    //Если пользователь не залогинен - перейти к логину
+            header("Location: http://ttbg.su/login.php");
         }
     }
 
-    public function getMessages()         //печать существующих и видимых (по размерам окна чата) сообщений чата 
+    public function getMessages()                                   //печать помещающихся в чат сообщений
     {
-        $db_connection = new mysqli (       //соединяемся с БД
+        $db_connection = new mysqli (                               //открываем соединение с базой данных
             "localhost",
             "srv117239_msus",
             "msqlarino",
             "srv117239_msqlchat"
         );
-        if ($db_connection->connect_errno) { //если при соединении с БД произошла ошибка - то пишем об этом в файл
-            $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);
-            header("Location: http://ttbg.su/Edronov/Chat/SideEffects/db_error.php");//редир на стр с сообщ о ошиб
+        if ($db_connection->connect_errno) {                                            //если нет связи с БД
+            $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);  //пишем ошибку в лог-файл
+
         }
+
         //задаем текст запроса к БД для получения видимых сообщений
         $query = <<<GETMESSAGES
 SELECT nickname, text FROM Messages LEFT JOIN Users ON Users.id = Messages.user_id ORDER BY Messages.id ASC LIMIT 20;
 GETMESSAGES;
 
-        $get_messages = $db_connection->prepare($query);      //создаем пре-запрос к базе используя текст запроса
-        if ($db_connection->connect_errno) {                  //если при создании пре-запроса возникла ошибка
-            $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);
-            $db_connection->close();
-            header("Location: http://ttbg.su/Edronov/Chat/SideEffects/db_error.php"); //редир на стр с сообщ о ошибк
+        $get_messages = $db_connection->prepare($query);                                        //готовим запрос
+        if ($db_connection->connect_errno) {                                                    //если ошибка
+            $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);  //пишем в файл ошибок
+            $db_connection->close();                                                            //закрываем БД
         }
 
-        $nickname = array();      //создаем переменную, куда будем выводить столбец "ник-пользователя" из ответа БД
-        $message = array();       //создаем переменную, куда будем выводить столбец "сообщение пользов" из ответа БД
+        $nickname = array();                                            //здесь храним "ник-пользователя" из ответа БД
+        $message = array();                                       //здесь храним "сообщение пользователя" из ответа БД
 
-        $get_messages->bind_result($nickname, $message);
-        $get_messages->execute();
-        $get_messages->store_result();
+        $get_messages->bind_result($nickname, $message);               //привязываем переменные к ответу БД
+        $get_messages->execute();                                                //выполняем запрос к БД
+        $get_messages->store_result();                                     //размещает ответ БД в связанные переменные
 
-        $messages_text = null;                                //переменная, содержащая весь текст видимых сообщений
-        while ($get_messages->fetch()) {                      //разбираем построчно ответ БД
+        $messages_text = null;                                      //переменная для хранения текста видимых сообщений
+        while ($get_messages->fetch()) {                                                //разбираем построчно ответ БД
            $messages_text = $messages_text . $nickname . ": ". $message .  "<br></br>";   
         }                                                                  //печатаем "имя пользователя: сообщение"
-        $db_connection->close();
-        return $messages_text;
+        $db_connection->close();                                                          //закрываем связь связь с БД
+        return $messages_text;                                                    //возвращаем текст видимых сообщений
     }
 
-    public function getUserWelcome()                        //"приветствие" залогиневшемуся пользователю
+    public function getUserWelcome()                     // получить строку "приветствия" залогиневшемуся пользователю
     {
         return "Hello, {$_SESSION['user_nickname']}!"; 
     }
 
-    protected function userLogged()                  //проверка, залогинен ли пользователь
+    protected function userLogged()                                              //проверка, залогинен ли пользователь
     {
         return isset($_SESSION['user_id']);          
     }
 
-    protected function existPostData()               //проверка наличия входных данных от пользователя
+    protected function existPostData()                             //проверка наличия нового сообщения от пользователя
     {
         return isset($_POST['message']);             
     }
     
-    protected function postMessage()                 //запись новго сообщения в БД
+    protected function postMessage()                                       //запись нового сообщения пользователя в БД
     {
-        $user_id = $_SESSION['user_id'];             //берем id пользователя из глобальной переменной сессии
-        $messageText = $_POST['message'];            //берем сообщение пользователя из глобальной переменной $_POST
+        $user_id = $_SESSION['user_id'];                       //берем id пользователя из глобальной переменной сессии
+        $messageText = $_POST['message'];               //берем сообщение пользователя из глобальной переменной $_POST
 
-        $db_connection = new mysqli (                
+        $db_connection = new mysqli (                                                               //соединяемся с БД
             "localhost",                             
             "srv117239_msus",                        
             "msqlarino",                             
             "srv117239_msqlchat"                     
         );
-        if ($db_connection->connect_errno) {                   //Если при соединении с БД произошла ошибка 
-            $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);
-            $db_connection->close();
-            header("Location: http://ttbg.su/Edronov/Chat/SideEffects/db_error.php"); //редир на стр с сообщ о ошибк
+        if ($db_connection->connect_errno) {                                             //Если ошибка соединения с БД
+            $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);   //пишем ошибку в файл
         }
+
         //задаем текст запроса к БД для записи нового сообщения пользователя
         $query = <<<INSERTMESSAGE
 INSERT INTO
@@ -100,29 +98,28 @@ VALUES
     (?, ?)
 ;
 INSERTMESSAGE;
-        $insert_new_message = $db_connection->prepare($query);//создаем пре-запрос к базе используя текст запроса
-        if ($db_connection->connect_errno) {                  //если при создании пре-запроса возникла ошибка
-            $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);
-            $db_connection->close();                                            
-            header("Location: http://ttbg.su/Edronov/Chat/SideEffects/chat.php");   //редир на стр с сообщ о ошибк
+        $insert_new_message = $db_connection->prepare($query);                                   //готовим запрос к БД
+        if ($db_connection->connect_errno) {                                  //при подготовке запроса возникла ошибка
+            $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);   //пишем ошибку в файл
+            $db_connection->close();                                                                    //закрываем БД
         }
-        $insert_new_message->bind_param("is", $user_id, $messageText); 
-        $insert_new_message->execute();                                
-        $db_connection->close();                                       
+        $insert_new_message->bind_param("is", $user_id, $messageText); //связать переменные с запросом
+        $insert_new_message->execute();                                                             //выполнить запрос
+        $db_connection->close();                                                                  //закрыть связь с БД
     }
 
-    public function render()
+    public function render()                                  //функция рендеринга html страницы (генерация html кода)
     {
         echo <<<PAGE
 <!DOCTYPE html>
 <html>
     <head>
         <title>Мой чат</title>
-        <style>@import url('../Design/style.css');</style>
+        <style>@import url('style.css');</style>
     </head>
     <body>    
         <div id = "interface">      
-            <a href = "http://ttbg.su/Edronov/Chat/SideEffects/logout.php">Выйти</a>
+            <a href = "http://ttbg.su/logout.php">Выйти</a>
             <div id = "chatview">
                 {$this->getMessages()}
             </div>

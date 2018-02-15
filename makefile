@@ -1,32 +1,36 @@
+class=Edronov/Chat/Classes
+sideeffect=Edronov/Chat/SideEffects
+
+
 MyChat: registration login chat logout  Registration Login Chat Logout PhpPage
 
 
-registration: Edronov/Chat/SideEffects/registration.php
-	scp Edronov/Chat/SideEffects/registration.php srv117239@mybeta:~/ttbg.su/registration.php
+registration: $(sideeffect)/registration.php
+	scp $(sideeffect)/registration.php srv117239@mybeta:~/ttbg.su/registration.php
 
-login: Edronov/Chat/SideEffects/login.php
-	scp Edronov/Chat/SideEffects/login.php srv117239@mybeta:~/ttbg.su/login.php
+login: $(sideeffect)/login.php
+	scp $(sideeffect)/login.php srv117239@mybeta:~/ttbg.su/login.php
 
-chat: Edronov/Chat/SideEffects/chat.php
-	scp Edronov/Chat/SideEffects/chat.php srv117239@mybeta:~/ttbg.su/chat.php
+chat: $(sideeffect)/chat.php
+	scp $(sideeffect)/chat.php srv117239@mybeta:~/ttbg.su/chat.php
 
-logout: Edronov/Chat/SideEffects/logout.php
-	scp Edronov/Chat/SideEffects/logout.php srv117239@mybeta:~/ttbg.su/logout.php
-
-
+logout: $(sideeffect)/logout.php
+	scp $(sideeffect)/logout.php srv117239@mybeta:~/ttbg.su/logout.php
 
 
-Registration: Edronov/Chat/Classes/Registration.php
-	scp Edronov/Chat/Classes/Registration.php srv117239@mybeta:~/ttbg.su/Registration.php
 
-Login: Edronov/Chat/Classes/Login.php
-	scp Edronov/Chat/Classes/Login.php srv117239@mybeta:~/ttbg.su/Login.php
 
-Chat: Edronov/Chat/Classes/Chat.php
-	scp Edronov/Chat/Classes/Chat.php srv117239@mybeta:~/ttbg.su/Chat.php
+Registration: $(class)/Registration.php
+	scp $(class)/Registration.php srv117239@mybeta:~/ttbg.su/Registration.php
 
-Logout: Edronov/Chat/Classes/Logout.php
-	scp Edronov/Chat/Classes/Logout.php srv117239@mybeta:~/ttbg.su/Logout.php
+Login: $(class)/Login.php
+	scp $(class)/Login.php srv117239@mybeta:~/ttbg.su/Login.php
 
-PhpPage: Edronov/Chat/Classes/PhpPage.php
-	scp Edronov/Chat/Classes/PhpPage.php srv117239@mybeta:~/ttbg.su/PhpPage.php
+Chat: $(class)/Chat.php
+	scp $(class)/Chat.php srv117239@mybeta:~/ttbg.su/Chat.php
+
+Logout: $(class)/Logout.php
+	scp $(class)/Logout.php srv117239@mybeta:~/ttbg.su/Logout.php
+
+PhpPage: $(class)/PhpPage.php
+	scp $(class)/PhpPage.php srv117239@mybeta:~/ttbg.su/PhpPage.php

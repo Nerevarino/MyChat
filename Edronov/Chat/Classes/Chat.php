@@ -35,9 +35,7 @@ class Chat extends PhpPage
         }
 
         //задаем текст запроса к БД для получения видимых сообщений
-        $query = <<<GETMESSAGES
-SELECT nickname, text FROM Messages LEFT JOIN Users ON Users.id = Messages.user_id ORDER BY Messages.id ASC LIMIT 20;
-GETMESSAGES;
+        //$query = getmessages.sql
 
         $get_messages = $db_connection->prepare($query);                                        //готовим запрос
         if ($db_connection->connect_errno) {                                                    //если ошибка
@@ -91,13 +89,8 @@ GETMESSAGES;
         }
 
         //задаем текст запроса к БД для записи нового сообщения пользователя
-        $query = <<<INSERTMESSAGE
-INSERT INTO
-    Messages(user_id, text)
-VALUES
-    (?, ?)
-;
-INSERTMESSAGE;
+        //$query = postmessage.sql
+
         $insert_new_message = $db_connection->prepare($query);                                   //готовим запрос к БД
         if ($db_connection->connect_errno) {                                  //при подготовке запроса возникла ошибка
             $this->errorToFile("../logs/db_error.log", $db_connection->connect_error);   //пишем ошибку в файл
@@ -110,27 +103,6 @@ INSERTMESSAGE;
 
     public function render()                                  //функция рендеринга html страницы (генерация html кода)
     {
-        echo <<<PAGE
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Мой чат</title>
-        <style>@import url('style.css');</style>
-    </head>
-    <body>    
-        <div id = "interface">      
-            <a href = "http://ttbg.su/logout.php">Выйти</a>
-            <div id = "chatview">
-                {$this->getMessages()}
-            </div>
-            <form id = "form" method = "post" action = "chat.php">
-                <input id = "messageBox"  name = "message" type = "text"  size = "63" />
-                <input id = "sendMessage" type = "submit" value = "Send"></input>
-            </form>
-        </div>
-        <p> {$this->getUserWelcome()} </p>
-    </body>
-</html>
-PAGE;
+        //chat.html
     }
 }

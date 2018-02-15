@@ -42,11 +42,7 @@ class Login extends PhpPage
         }
 
         //создаем текст запроса к БД на проверку наличия пользователя с такими идентификационными данными
-        $query = <<<VERIFYUSER
-SELECT id, nickname FROM Users 
-    WHERE (nickname=? AND passwd=?)
-    OR    (email=? AND passwd=?);
-VERIFYUSER;
+        //$query = login.sql
 
         $verification = $db_connection->prepare($query);                                          //готовим запрос к БД
         $verification->bind_param(                             //связываем переменные с данными пользователя с запросом
@@ -87,29 +83,6 @@ VERIFYUSER;
 
     public function render()                                                    //печать страницы (получение html кода)
     {
-        echo <<<PAGE
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset = "utf-8"></meta>
-        <title>Мой чат</title>
-    </head>
-    <body>
-        <form method = "post">
-            Nickname or E-mail: <input type = "text" name = "nickname_or_email" size = "50"></input>
-            <br></br>
-            <br></br>
-            Password: <input type = "password" name = "password"  size = "50"></input>
-            <br></br>
-            <br></br>
-            <input type = "submit"  value = "Войти"></input>
-            <a href = "http://ttbg.su/registration.php">Зарегистрироваться</a>
-            <br></br>
-            <br></br>
-            <br> {$this->status_message} </br>
-        </form>
-    </body>
-</html>
-PAGE;
+        //login.html
     }
 }

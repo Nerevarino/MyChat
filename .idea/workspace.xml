@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="344af882-4bc0-48a5-9a21-42e51810f98f" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/Edronov/Chat/html/chat.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Edronov/Chat/html/login.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Edronov/Chat/html/registration.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Edronov/Chat/sql/getmessages.sql" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Edronov/Chat/sql/login.sql" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Edronov/Chat/sql/postmessage.sql" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Edronov/Chat/sql/registration.sql" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Edronov/Chat/Classes/Chat.php" afterPath="$PROJECT_DIR$/Edronov/Chat/Classes/Chat.php" />
-      <change beforePath="$PROJECT_DIR$/Edronov/Chat/Classes/DBError.php" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Edronov/Chat/Classes/File.php" afterPath="" />
       <change beforePath="$PROJECT_DIR$/Edronov/Chat/Classes/Login.php" afterPath="$PROJECT_DIR$/Edronov/Chat/Classes/Login.php" />
-      <change beforePath="$PROJECT_DIR$/Edronov/Chat/Classes/Logout.php" afterPath="$PROJECT_DIR$/Edronov/Chat/Classes/Logout.php" />
-      <change beforePath="$PROJECT_DIR$/Edronov/Chat/Classes/PhpPage.php" afterPath="$PROJECT_DIR$/Edronov/Chat/Classes/PhpPage.php" />
       <change beforePath="$PROJECT_DIR$/Edronov/Chat/Classes/Registration.php" afterPath="$PROJECT_DIR$/Edronov/Chat/Classes/Registration.php" />
-      <change beforePath="$PROJECT_DIR$/Edronov/Chat/SideEffects/chat.php" afterPath="$PROJECT_DIR$/Edronov/Chat/SideEffects/chat.php" />
-      <change beforePath="$PROJECT_DIR$/Edronov/Chat/SideEffects/db_error.php" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Edronov/Chat/SideEffects/login.php" afterPath="$PROJECT_DIR$/Edronov/Chat/SideEffects/login.php" />
-      <change beforePath="$PROJECT_DIR$/Edronov/Chat/SideEffects/logout.php" afterPath="$PROJECT_DIR$/Edronov/Chat/SideEffects/logout.php" />
-      <change beforePath="$PROJECT_DIR$/Edronov/Chat/SideEffects/registration.php" afterPath="$PROJECT_DIR$/Edronov/Chat/SideEffects/registration.php" />
       <change beforePath="$PROJECT_DIR$/makefile" afterPath="$PROJECT_DIR$/makefile" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,11 +36,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="makefile" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/makefile">
+      <file leaf-file-name="Chat.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Edronov/Chat/Classes/Chat.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="270">
+              <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getmessages.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Edronov/Chat/sql/getmessages.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="postmessage.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Edronov/Chat/sql/postmessage.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -50,13 +68,27 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>File</find>
       <find>322</find>
       <find>header</find>
       <find>error</find>
+      <find>Edronov/Chat/SideEffects</find>
+      <find>Edronov/Chat/Classes</find>
+      <find>render</find>
     </findStrings>
+    <replaceStrings>
+      <replace>$(sideeffect)</replace>
+      <replace>$(class)</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,14 +103,21 @@
       <list>
         <option value="$PROJECT_DIR$/Edronov/Chat/Classes/PhpPage.php" />
         <option value="$PROJECT_DIR$/Edronov/Chat/Classes/Logout.php" />
-        <option value="$PROJECT_DIR$/Edronov/Chat/Classes/Registration.php" />
         <option value="$PROJECT_DIR$/Edronov/Chat/SideEffects/registration.php" />
         <option value="$PROJECT_DIR$/Edronov/Chat/SideEffects/logout.php" />
         <option value="$PROJECT_DIR$/Edronov/Chat/SideEffects/login.php" />
         <option value="$PROJECT_DIR$/Edronov/Chat/SideEffects/chat.php" />
-        <option value="$PROJECT_DIR$/Edronov/Chat/Classes/Chat.php" />
-        <option value="$PROJECT_DIR$/Edronov/Chat/Classes/Login.php" />
         <option value="$PROJECT_DIR$/makefile" />
+        <option value="$PROJECT_DIR$/Edronov/Chat/html/login.html" />
+        <option value="$PROJECT_DIR$/Edronov/Chat/html/registration.html" />
+        <option value="$PROJECT_DIR$/Edronov/Chat/html/chat.html" />
+        <option value="$PROJECT_DIR$/Edronov/Chat/Classes/Login.php" />
+        <option value="$PROJECT_DIR$/Edronov/Chat/sql/login.sql" />
+        <option value="$PROJECT_DIR$/Edronov/Chat/sql/registration.sql" />
+        <option value="$PROJECT_DIR$/Edronov/Chat/Classes/Registration.php" />
+        <option value="$PROJECT_DIR$/Edronov/Chat/sql/getmessages.sql" />
+        <option value="$PROJECT_DIR$/Edronov/Chat/Classes/Chat.php" />
+        <option value="$PROJECT_DIR$/Edronov/Chat/sql/postmessage.sql" />
       </list>
     </option>
   </component>
@@ -89,7 +128,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="7" fullScreen="true">
     <option name="x" value="260" />
     <option name="y" value="53" />
     <option name="width" value="1400" />
@@ -97,7 +136,7 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -110,12 +149,52 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MyChat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyChat" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="MyChat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyChat" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Edronov" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="MyChat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyChat" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Edronov" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Chat" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="MyChat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyChat" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Edronov" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Chat" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="html" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="MyChat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyChat" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Edronov" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Chat" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="sql" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -146,27 +225,29 @@
       <workItem from="1517846854156" duration="104000" />
       <workItem from="1517928354086" duration="7368000" />
       <workItem from="1518196494572" duration="6187000" />
-      <workItem from="1518250100442" duration="3040000" />
+      <workItem from="1518250100442" duration="3796000" />
+      <workItem from="1518537050396" duration="728000" />
+      <workItem from="1518708639680" duration="10063000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25596000" />
+    <option name="totallyTimeSpent" value="37143000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-30" width="1366" height="798" extended-state="6" />
+    <frame x="0" y="-30" width="1366" height="798" extended-state="7" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18228404" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32714286" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -183,24 +264,25 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Edronov/Chat/Classes/Chat.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edronov/Chat/Classes/Chat.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="18" />
-          <folding>
-            <marker date="1518250729288" expanded="true" signature="1472:1588" ph="SELECT nickn... Messages" />
-            <marker date="1518250729288" expanded="true" signature="4947:5004" ph="INSERT INTO Messages" />
-            <marker date="1518250729288" expanded="true" signature="6015:6658" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6026:6118" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6129:6650" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6164:6595" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6264:6322" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6389:6580" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -216,23 +298,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="40" column="12" lean-forward="true" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
-          <folding>
-            <element signature="e#196#5478#0#PHP" expanded="false" />
-            <element signature="e#420#1437#0#PHP" expanded="false" />
-            <element signature="e#489#1414#0#PHP" expanded="false" />
-            <element signature="e#613#1102#0#PHP" expanded="false" />
-            <element signature="e#1211#1414#0#PHP" expanded="false" />
-            <element signature="e#1443#4219#0#PHP" expanded="false" />
-            <element signature="e#1813#2046#0#PHP" expanded="false" />
-            <element signature="e#2171#2297#0#PHP" expanded="false" />
-            <element signature="e#2428#2702#0#PHP" expanded="false" />
-            <element signature="e#3214#4205#0#PHP" expanded="false" />
-            <element signature="e#3846#4205#0#PHP" expanded="false" />
-            <element signature="e#4229#4437#0#PHP" expanded="false" />
-            <element signature="e#4443#4614#0#PHP" expanded="false" />
-            <element signature="e#4620#5476#0#PHP" expanded="false" />
-            <element signature="e#4755#5469#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -240,12 +305,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="23" />
-          <folding>
-            <element signature="e#64#816#0#PHP" expanded="false" />
-            <element signature="e#99#636#0#PHP" expanded="false" />
-            <element signature="e#168#417#0#PHP" expanded="false" />
-            <element signature="e#642#813#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -253,16 +312,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1518250729288" expanded="true" signature="1472:1588" ph="SELECT nickn... Messages" />
-            <marker date="1518250729288" expanded="true" signature="4947:5004" ph="INSERT INTO Messages" />
-            <marker date="1518250729288" expanded="true" signature="6015:6658" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6026:6118" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6129:6650" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6164:6595" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6264:6322" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6389:6580" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -280,16 +330,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
           <caret line="38" column="94" lean-forward="false" selection-start-line="38" selection-start-column="94" selection-end-line="38" selection-end-column="94" />
-          <folding>
-            <marker date="1518250729288" expanded="true" signature="1472:1588" ph="SELECT nickn... Messages" />
-            <marker date="1518250729288" expanded="true" signature="4947:5004" ph="INSERT INTO Messages" />
-            <marker date="1518250729288" expanded="true" signature="6015:6658" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6026:6118" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6129:6650" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6164:6595" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6264:6322" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6389:6580" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -299,16 +340,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
           <caret line="31" column="10" lean-forward="false" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
-          <folding>
-            <marker date="1518250729288" expanded="true" signature="1472:1588" ph="SELECT nickn... Messages" />
-            <marker date="1518250729288" expanded="true" signature="4947:5004" ph="INSERT INTO Messages" />
-            <marker date="1518250729288" expanded="true" signature="6015:6658" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6026:6118" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6129:6650" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6164:6595" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6264:6322" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6389:6580" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -341,7 +373,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -349,7 +380,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -357,7 +387,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -365,58 +394,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Edronov/Chat/Classes/Registration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="25" column="34" lean-forward="true" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
-          <folding>
-            <marker date="1518250184698" expanded="true" signature="3016:3083" ph="INSERT INTO Users" />
-            <marker date="1518250184698" expanded="true" signature="4499:5164" ph="..." />
-            <marker date="1518250184698" expanded="true" signature="4507:4579" ph="..." />
-            <marker date="1518250184698" expanded="true" signature="4587:5156" ph="..." />
-            <marker date="1518250184698" expanded="true" signature="4618:5147" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Edronov/Chat/Classes/Login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="115" column="0" lean-forward="true" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-          <folding>
-            <element signature="e#196#5478#0#PHP" expanded="false" />
-            <element signature="e#420#1437#0#PHP" expanded="false" />
-            <element signature="e#489#1414#0#PHP" expanded="false" />
-            <element signature="e#613#1102#0#PHP" expanded="false" />
-            <element signature="e#1211#1414#0#PHP" expanded="false" />
-            <element signature="e#1443#4219#0#PHP" expanded="false" />
-            <element signature="e#1813#2046#0#PHP" expanded="false" />
-            <element signature="e#2171#2297#0#PHP" expanded="false" />
-            <element signature="e#2428#2702#0#PHP" expanded="false" />
-            <element signature="e#3214#4205#0#PHP" expanded="false" />
-            <element signature="e#3846#4205#0#PHP" expanded="false" />
-            <element signature="e#4229#4437#0#PHP" expanded="false" />
-            <element signature="e#4443#4614#0#PHP" expanded="false" />
-            <element signature="e#4620#5476#0#PHP" expanded="false" />
-            <element signature="e#4755#5469#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Edronov/Chat/Classes/Logout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding>
-            <element signature="e#64#816#0#PHP" expanded="false" />
-            <element signature="e#99#636#0#PHP" expanded="false" />
-            <element signature="e#168#417#0#PHP" expanded="false" />
-            <element signature="e#642#813#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -428,27 +405,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Edronov/Chat/Classes/Chat.php">
+    <entry file="file://$PROJECT_DIR$/makefile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="48" lean-forward="true" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
-          <folding>
-            <marker date="1518250729288" expanded="true" signature="1472:1588" ph="SELECT nickn... Messages" />
-            <marker date="1518250729288" expanded="true" signature="4947:5004" ph="INSERT INTO Messages" />
-            <marker date="1518250729288" expanded="true" signature="6015:6658" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6026:6118" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6129:6650" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6164:6595" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6264:6322" ph="..." />
-            <marker date="1518250729288" expanded="true" signature="6389:6580" ph="..." />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/makefile">
+    <entry file="file://$PROJECT_DIR$/Edronov/Chat/Classes/Logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edronov/Chat/html/registration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edronov/Chat/html/chat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edronov/Chat/html/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edronov/Chat/Classes/Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edronov/Chat/sql/login.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="29" lean-forward="true" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edronov/Chat/Classes/Registration.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edronov/Chat/sql/registration.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edronov/Chat/sql/postmessage.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edronov/Chat/sql/getmessages.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Edronov/Chat/Classes/Chat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
           <folding />
         </state>
       </provider>

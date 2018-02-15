@@ -54,13 +54,7 @@ class Registration extends PhpPage
         }
 
         //текст запроса к БД для добавления нового пользователя
-        $query = <<<NEWUSER
-INSERT INTO
-    Users(email, nickname, passwd)
-VALUES
-    (?, ?, ?)
-;
-NEWUSER;
+        //$query = registration.sql
         $insert_user = $db_connection->prepare($query);       //готовим запрос к БД и связываем переменные с ответом БД
         $insert_user->bind_param("sss", $this->email, $this->nickname, $this->password);
         $insert_user->execute();                                                                //выполняем запрос к БД
@@ -79,30 +73,6 @@ NEWUSER;
 
     public function render()                                                    //печать страницы (генерация html кода)
     {
-        echo <<<PAGE
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset = "utf-8"></meta>
-		<title>Регистрация</title>
-	</head>
-	<body>
-        <form method = "post">
-            E-mail: <input type = "text" name = "email" size = "50"></input>
-            <br></br>
-            <br></br>
-            Nickname: <input type = "text" name = "nickname"  size = "50"></input>
-            <br></br>
-            <br></br>
-            password: <input type = "password" name = "password"  size = "50"></input>
-            <br></br>
-            <br></br>
-            <input type = "submit"  value = "register"></input>
-            <br></br>
-            <br> {$this->status_message} </br> 
-        </form>
-	</body>
-</html>
-PAGE;
+        //registration.html
     }
 }

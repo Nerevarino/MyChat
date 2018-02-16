@@ -35,7 +35,7 @@ class Chat extends PhpPage
         }
 
         //задаем текст запроса к БД для получения видимых сообщений
-        //$query = getmessages.sql
+        $query = "getmessages.sql";
 
         $get_messages = $db_connection->prepare($query);                                        //готовим запрос
         if ($db_connection->connect_errno) {                                                    //если ошибка
@@ -89,7 +89,7 @@ class Chat extends PhpPage
         }
 
         //задаем текст запроса к БД для записи нового сообщения пользователя
-        //$query = postmessage.sql
+        $query = "postmessage.sql";
 
         $insert_new_message = $db_connection->prepare($query);                                   //готовим запрос к БД
         if ($db_connection->connect_errno) {                                  //при подготовке запроса возникла ошибка
@@ -103,6 +103,6 @@ class Chat extends PhpPage
 
     public function render()                                  //функция рендеринга html страницы (генерация html кода)
     {
-        //chat.html
+        echo "chat.html";
     }
 }

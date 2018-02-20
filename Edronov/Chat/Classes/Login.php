@@ -42,7 +42,7 @@ class Login extends PhpPage
         }
 
         //создаем текст запроса к БД на проверку наличия пользователя с такими идентификационными данными
-        $query = "login.sql";
+        $query = $this->loadSqlRequest("login.sql");
 
         $verification = $db_connection->prepare($query);                                          //готовим запрос к БД
         $verification->bind_param(                             //связываем переменные с данными пользователя с запросом
@@ -83,6 +83,10 @@ class Login extends PhpPage
 
     public function render()                                                    //печать страницы (получение html кода)
     {
-        echo "login.html";
+        echo $this->loadHtmlTemplate
+        ("login.html",
+            array('status_message'),
+            array("{$this->status_message}")
+        );
     }
 }

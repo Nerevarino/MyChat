@@ -8,13 +8,13 @@
 <div id = "interface">
     <a href = "http://ttbg.su/logout.php">Выйти</a>
     <div id = "chatview">
-        {$this->getMessages()}
+        messages
     </div>
     <form id = "form" method = "post" action = "chat.php">
         <input id = "messageBox"  name = "message" type = "text"  size = "63" />
         <input id = "sendMessage" type = "submit" value = "Send"></input>
     </form>
 </div>
-<p> {$this->getUserWelcome()} </p>
+<p> user_welcome </p>
 </body>
 </html>

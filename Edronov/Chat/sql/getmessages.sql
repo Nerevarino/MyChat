@@ -1,3 +1,3 @@
 SELECT nickname, text
-  FROM Messages LEFT JOIN Users
-    ON Users.id = Messages.user_id ORDER BY Messages.id ASC LIMIT 20;
+  FROM (SELECT * FROM Messages LEFT JOIN Users
+    ON Users.id = Messages.user_id ORDER BY Messages.id DESC LIMIT 20) as Mesc ORDER BY Mesc.id ASC;
